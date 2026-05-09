@@ -1,13 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+//TASK 1
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
-    }
-}
+//Visit A — marked: [A]
+//first unvisited neighbor: C
+//Visit C — marked: [A, C]
+//A is already marked, skip
+//first unvisited neighbor: B
+//Visit B — marked: [A, C, B]
+//A is already marked, skip
+//C is already marked, skip
+//first unvisited neighbor: E
+//Visit E — marked: [A, C, B, E]
+//first unvisited neighbor: G
+//Visit G — marked: [A, C, B, E, G]
+//first unvisited neighbor: F
+//Visit F — marked: [A, C, B, E, G, F]
+//G is already marked, skip
+//E is already marked, skip
+//no unvisited neighbors, backtrack to G
+//Back at G
+//B is already marked, skip
+//no unvisited neighbors, backtrack to E
+//Back at E
+//F is already marked, skip
+//B is already marked, skip
+//no unvisited neighbors, backtrack to B
+//Back at B
+//G is already marked, skip
+//no unvisited neighbors, backtrack to C
+//Back at C
+//first unvisited neighbor: D
+//Visit D — marked: [A, C, B, E, G, F, D]
+//C is already marked, skip
+//A is already marked, skip
+//no unvisited neighbors, search complete
+//DFS traversal order: A - C - B - E - G - F - D
