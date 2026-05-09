@@ -34,3 +34,41 @@
 //A is already marked, skip
 //no unvisited neighbors, search complete
 //DFS traversal order: A - C - B - E - G - F - D
+
+
+
+//TASK 2
+
+//Visit A — marked: [A]
+//enqueue neighbors: C, B, D
+//queue: [C, B, D]
+//Dequeue C — marked: [A, C]
+//A is already marked, skip
+//B is already marked, skip
+//D is already marked, skip
+//queue: [B, D]
+//Dequeue B — marked: [A, C, B]
+//A is already marked, skip
+//C is already marked, skip
+//enqueue E
+//enqueue G
+//queue: [D, E, G]
+//Dequeue D — marked: [A, C, B, D]
+//C is already marked, skip
+//A is already marked, skip
+//queue: [E, G]
+//Dequeue E — marked: [A, C, B, D, E]
+//G is already marked, skip
+//enqueue F
+//B is already marked, skip
+//queue: [G, F]
+//Dequeue G — marked: [A, C, B, D, E, G]
+//F is already marked, skip
+//B is already marked, skip
+//queue: [F]
+//Dequeue F — marked: [A, C, B, D, E, G, F]
+//G is already marked, skip
+//E is already marked, skip
+//queue: []
+//no more vertices, search complete
+//BFS traversal order: A - C - B - D - E - G - F
