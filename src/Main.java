@@ -154,3 +154,64 @@
 //Total distance: 150
 
 
+
+
+//TASK 5
+
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String[] cities = {"Edinburgh", "Stirling", "Perth", "Glasgow", "Dundee"};
+
+        int INF = 9999;
+        int n = 5;
+
+        int[][] dist = {
+                {   0,  50, 100,  70, INF },
+                {  50,   0,  40,  50, INF },
+                { 100,  40,   0, INF,  60 },
+                {  70,  50, INF,   0, INF },
+                { INF, INF,  60, INF,   0 }
+        };
+
+        int[] d       = new int[n];
+        int[] prev    = new int[n];
+        boolean[] visited = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            d[i]    = INF;
+            prev[i] = -1;
+        }
+        d[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            int u = -1;
+            for (int v = 0; v < n; v++) {
+                if (!visited[v] && (u == -1 || d[v] < d[u])) {
+                    u = v;
+                }
+            }
+            visited[u] = true;
+
+            for (int v = 0; v < n; v++) {
+                if (dist[u][v] != INF && d[u] + dist[u][v] < d[v]) {
+                    d[v]    = d[u] + dist[u][v];
+                    prev[v] = u;
+                }
+            }
+        }
+
+        System.out.println("Shortest path: ");
+        int v = 4;
+        String path = "";
+        while (v != -1) {
+            path = cities[v] + " " + path;
+            v = prev[v];
+        }
+        System.out.println(path);
+        System.out.println("Total distance: " + d[4]);
+    }
+}
